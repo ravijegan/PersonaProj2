@@ -117,7 +117,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Charm" />
+                android:text="Skill" />
 
             <ProgressBar
                 android:id="@+id/progressBar13"
@@ -137,7 +137,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Kindess" />
+                android:text="Religion" />
 
             <ProgressBar
                 android:id="@+id/progressBar14"
