@@ -12,12 +12,22 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".BacklogActivity"
+            android:exported="true" />
+        <activity
+            android:name=".CreateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DailyActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
