@@ -2,17 +2,54 @@ package com.example.personaproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class BacklogActivity extends AppCompatActivity {
+
+    ArrayList<Task> backlogtasks;
+    RecyclerView backlogRecycler;
+    BacklogAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.backlog);
+
+        backlogRecycler = (RecyclerView) findViewById(R.id.backlogListId);
+
+        if(getIntent().hasExtra("bundle")){
+            System.out.print("there is a bundle");
+            Bundle bundle = getIntent().getBundleExtra("bundle");
+            backlogtasks = bundle.getParcelableArrayList("taskList");
+            System.out.println(" size of backlog list is " + backlogtasks.size());
+        }
+
+        backlogRecycler.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new BacklogAdapter(backlogtasks, this, new BacklogAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Task task) {
+                selectDetails(task);
+            }
+        });
+
+        backlogRecycler.setAdapter(adapter);
+    }
+
+    private void selectDetails(Task task){
+        Intent newIntent = new Intent(this, TaskDetails.class);
+        Bundle newbundle = new Bundle();
+        newbundle.putParcelable("task", task);
+        newIntent.putExtra("bundle", newbundle);
+        startActivity(newIntent);
     }
 
     @Override

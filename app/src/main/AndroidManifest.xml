@@ -28,6 +28,10 @@
         <activity
             android:name=".DailyActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".TaskDetails"
+            android:exported="true" />
     </application>
 
 </manifest>
